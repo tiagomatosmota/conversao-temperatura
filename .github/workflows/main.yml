@@ -6,9 +6,10 @@ on:
   push:
     branches: [ main ]
   workflow_dispatch:
+  
 jobs:
-CI:
-  runs-on: ubuntu-latest
+  CI:
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - name: Docker Login
