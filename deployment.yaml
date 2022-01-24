@@ -1,0 +1,39 @@
+#Deploy da apli Conversao de Temperatura
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: temperatura
+spec:
+  replicas: 6
+  selector:
+    matchLabels:
+      app: temperatura
+  template:
+    metadata:
+      labels:
+        app: temperatura
+    spec:
+      containers:
+      - name: temperatura
+        image: tmmota/api-temperatura:latest
+        ports:
+        - containerPort: 8080
+
+---
+
+# Serviço da aplicação
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: temperatura
+spec:
+  selector:
+    app: temperatura
+  ports:
+  - port: 8080
+    targetPort: 8080
+    nodePort: 30001
+  type: LoadBalancer
+  
