@@ -45,24 +45,7 @@ CD:
       - name: Deploy to Kubernetes cluster
         uses: Azure/k8s-deploy@v1.5
         with:
-          images: CD:
-    needs: [CI]
-    runs-on: ubuntu-latest
-    
-    steps:
-      - uses: actions/checkout@v2
-      
-      - name: Kubernetes Set Context
-        uses: Azure/k8s-set-context@v2
-        with:
-          method: kubeconfig
-          kubeconfig: ${{ secrets.K8S_CONFIG }}
-      
-      - name: Deploy to Kubernetes cluster
-        uses: Azure/k8s-deploy@v1.5
-        with:
+          images: 
           images: tmmota/api-temperatura:${{ github.run_number }} 
-          manifests:  |
-            deployment.yaml:${{ github.run_number }} 
           manifests:  |
             deployment.yaml      
