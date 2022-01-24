@@ -45,7 +45,6 @@ jobs:
       - name: Deploy to Kubernetes cluster
         uses: Azure/k8s-deploy@v1.5
         with:
-          images: 
           images: tmmota/api-temperatura:${{ github.run_number }} 
           manifests:  |
             deployment.yaml      
