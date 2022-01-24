@@ -29,7 +29,7 @@ jobs:
             tmmota/api-temperatura:latest
             tmmota/api-temperatura:${{ github.run_number }}    
           
-CD:
+  CD:
     needs: [CI]
     runs-on: ubuntu-latest
     
